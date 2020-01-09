@@ -4,41 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>vue-tutorial</title>
-    <link rel="stylesheet" href="./index.css">
   </head>
   <body>
     <div id="app">
-      <div class="game">
-        <div class="game-board">
-          <div class="board-row" >
-            <button class="square" v-bind:class="{ highlight: isHighlight(0) }" @click="handleClick(0)"> {{ current.squares[0] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(1) }" @click="handleClick(1)"> {{ current.squares[1] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(2) }" @click="handleClick(2)"> {{ current.squares[2] }} </button>
-          </div>
-          <div class="board-row" >
-            <button class="square" v-bind:class="{ highlight: isHighlight(3) }" @click="handleClick(3)"> {{ current.squares[3] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(4) }" @click="handleClick(4)"> {{ current.squares[4] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(5) }" @click="handleClick(5)"> {{ current.squares[5] }} </button>
-          </div>
-          <div class="board-row" >
-            <button class="square" v-bind:class="{ highlight: isHighlight(6) }" @click="handleClick(6)"> {{ current.squares[6] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(7) }" @click="handleClick(7)"> {{ current.squares[7] }} </button>
-            <button class="square" v-bind:class="{ highlight: isHighlight(8) }" @click="handleClick(8)"> {{ current.squares[8] }} </button>
-          </div>
-        </div>
-        <div class="game-info">
-          <div>{{ status }}</div>
-          <div>
-            <button @click="sortHistory"> 表示切り替え </button>
-          </div>
-
-          <ol :reversed="isHistoryDescending? 'reversed':false">
-            <li v-for="move in moves">
-              <button @click="jumpTo(move.step)"><span v-html="move.move"></span></button>
-            </li>
-          </ol>
-        </div>
-      </div>
+      <Game/>
     </div>
   </body>
 </html>

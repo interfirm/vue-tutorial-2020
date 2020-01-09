@@ -1,20 +1,63 @@
 import Vue from 'vue'
 require('./index.css')
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  data: {
-    history: [
-      {
-        squares: Array(9).fill(null),
-        col: null,
-        row: null
-      }
-    ],
-    isHistoryDescending: false,
-    stepNumber: 0,
-    xIsNext: true
+Vue.component('Square', {
+  template: `
+    <button class="square" :class="{ highlight: isHighlight }" @click="handleClick"> {{ value }} </button>
+  `,
+  props: {
+    value: String,
+    isHighlight: Boolean,
+    handleClick: Function
+  }
+})
+
+Vue.component('Board', {
+  template: `
+    <div class="game-board">
+      <div class="board-row" v-for='i in 3'>
+        <Square v-for='j in 3' :key="3*(i-1)+(j-1)" :value="squares[3*(i-1)+(j-1)]" :isHighlight="isHighlight(3*(i-1)+(j-1))" :handleClick="() => handleClick(3*(i-1)+(j-1))"/>
+      </div>
+    </div>
+  `,
+  props: {
+    squares: Array,
+    isHighlight: Function,
+    handleClick: Function
+  }
+})
+
+Vue.component('Game', {
+  template: `
+    <div class="game">
+        <Board :squares="current.squares" :isHighlight="isHighlight" :handleClick="handleClick"/>
+        <div class="game-info">
+          <div>{{ status }}</div>
+          <div>
+            <button @click="sortHistory"> 表示切り替え </button>
+          </div>
+
+          <ol :reversed="isHistoryDescending? 'reversed':false">
+            <li v-for="move in moves" :key="move.step">
+              <button @click="jumpTo(move.step)"><span v-html="move.move"></span></button>
+            </li>
+          </ol>
+        </div>
+      </div>
+  `,
+  data: function () {
+    return {
+      history: [
+        {
+          squares: Array(9).fill(null),
+          col: null,
+          row: null
+        }
+      ],
+      isHistoryDescending: false,
+      stepNumber: 0,
+      xIsNext: true
+    }
   },
   computed: {
     current: function () {
@@ -115,5 +158,10 @@ new Vue({
       return this.winLine.indexOf(i) >= 0
     }
   }
+})
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app'
 })
 /* eslint-enable no-new */
