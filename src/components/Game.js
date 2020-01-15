@@ -53,7 +53,7 @@ Vue.component('Game', {
         const row = procedure.row
         let move = step ? `Go to #${step} (${col},${row})` : 'Go to game start'
         if (this.stepNumber === step) {
-          move = `<b>${move}<b>`
+          move = `<b>${move}</b>`
         }
         return {
           move,
@@ -80,10 +80,6 @@ Vue.component('Game', {
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
           winLine = winLine.concat(lines[i])
         }
-      }
-      if (winLine.length) {
-        winLine = winLine.filter((x, i, self) => self.indexOf(x) === i)
-        winLine.sort(this.compareFunc)
       }
       return winLine
     },
