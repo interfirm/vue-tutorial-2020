@@ -3,9 +3,18 @@ import Vue from 'vue'
 Vue.component('Board', {
   template: require('../views/Board.pug'),
   props: {
-    squares: Array,
-    isHighlight: Function,
-    handleClick: Function
+    squares: {
+      type: Array,
+      required: true
+    },
+    isHighlight: {
+      type: Function,
+      required: true
+    },
+    handleClick: {
+      type: Function,
+      required: true
+    }
   },
   methods: {
     index: function (i, j) {
