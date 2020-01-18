@@ -1,22 +1,7 @@
 import Vue from 'vue'
 
 Vue.component('Game', {
-  template: `
-    <div class="game">
-      <Board :squares="current.squares" :isHighlight="isHighlight" :handleClick="handleClick"/>
-      <div class="game-info">
-        <div>{{ status }}</div>
-        <div>
-          <button @click="sortHistory"> 表示切り替え </button>
-        </div>
-        <ol :reversed="isHistoryDescending? 'reversed':false">
-          <li v-for="move in moves" :key="move.step">
-            <button @click="jumpTo(move.step)"><span v-html="move.move"></span></button>
-          </li>
-        </ol>
-      </div>
-    </div>
-  `,
+  template: require('../views/Game.pug'),
   data: function () {
     return {
       history: [

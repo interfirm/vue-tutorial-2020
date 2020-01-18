@@ -1,9 +1,7 @@
 import Vue from 'vue'
 
 Vue.component('Square', {
-  template: `
-    <button class="square" :class="{ highlight: isHighlight }" @click="handleClick"> {{ value }} </button>
-  `,
+  template: require('../views/Square.pug'),
   props: {
     value: String,
     isHighlight: Boolean,

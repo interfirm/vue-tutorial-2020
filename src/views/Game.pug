@@ -1,0 +1,10 @@
+.game
+  board(:squares="current.squares" :is-highlight="isHighlight" :handle-click="handleClick")
+  .game-info
+    div {{ status }}
+    div
+      button(@click="sortHistory")  表示切り替え 
+    ol(:reversed="isHistoryDescending? 'reversed':false")
+      li(v-for="move in moves" :key="move.step")
+        button(@click="jumpTo(move.step)")
+          span(v-html="move.move")
