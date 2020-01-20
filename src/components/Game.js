@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 Vue.component('Game', {
   template: require('../views/Game.pug'),
-  data: function () {
+  data () {
     return {
       history: [
         {
@@ -17,10 +17,10 @@ Vue.component('Game', {
     }
   },
   computed: {
-    current: function () {
+    current () {
       return this.history[this.stepNumber]
     },
-    status: function () {
+    status () {
       const winInfo = this.winInfo
       let status
       if (winInfo) {
@@ -32,7 +32,7 @@ Vue.component('Game', {
       }
       return status
     },
-    moves: function () {
+    moves () {
       let moves = this.history.map((procedure, step) => {
         const col = procedure.col
         const row = procedure.row
@@ -47,7 +47,7 @@ Vue.component('Game', {
       })
       return this.isHistoryDescending ? moves.reverse() : moves
     },
-    winLine: function () {
+    winLine () {
       const squares = this.current.squares
       const lines = [
         [0, 1, 2],
@@ -68,7 +68,7 @@ Vue.component('Game', {
       }
       return winLine
     },
-    winInfo: function () {
+    winInfo () {
       if (this.winLine.length) {
         return this.current.squares[this.winLine[0]]
       }
@@ -76,10 +76,10 @@ Vue.component('Game', {
     }
   },
   methods: {
-    compareFunc: function (a, b) {
+    compareFunc (a, b) {
       return a - b
     },
-    handleClick: function (i) {
+    handleClick (i) {
       const newHistory = this.history.slice(0, this.stepNumber + 1)
       const current = newHistory[newHistory.length - 1]
       const squares = current.squares.slice()
@@ -100,14 +100,14 @@ Vue.component('Game', {
       this.stepNumber = newHistory.length
       this.xIsNext = !this.xIsNext
     },
-    sortHistory: function () {
+    sortHistory () {
       this.isHistoryDescending = !this.isHistoryDescending
     },
-    jumpTo: function (step) {
+    jumpTo (step) {
       this.stepNumber = step
       this.xIsNext = step % 2 === 0
     },
-    isHighlight: function (i) {
+    isHighlight (i) {
       return this.winLine.indexOf(i) >= 0
     }
   }

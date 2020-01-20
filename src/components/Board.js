@@ -17,7 +17,7 @@ Vue.component('Board', {
     }
   },
   methods: {
-    index: function (i, j) {
+    index (i, j) {
       return 3 * (i - 1) + (j - 1)
     }
   }
