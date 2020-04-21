@@ -1,21 +1,38 @@
-# vue-tutorial
+# Vue Tutorial 2020
 
-> A Vue.js project
+## このアプリを作った背景・目的
+入社前研修の Vue の課題(React Tutorialをコピーする)
+- 三目並べゲーム (tic-tac-toe) の開発
+- 単一ファイルコンポーネントは使わない
+- MVVMを理解する
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+### 追加課題
+```
+1. 履歴内のそれぞれの着手の位置を (col, row) というフォーマットで表示する。
+2. 着手履歴のリスト中で現在選択されているアイテムをボールドにする。
+3. Board でマス目を並べる部分を、ハードコーディングではなく 2 つのループを使用するように書き換える。
+4. 着手履歴のリストを昇順・降順いずれでも並べかえられるよう、トグルボタンを追加する。
+5. どちらかが勝利した際に、勝利につながった 3 つのマス目をハイライトする。
+6. どちらも勝利しなかった場合、結果が引き分けになったというメッセージを表示する。
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 参考
+[React 公式チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html#setup-option-2-local-development-environment)
+
+## このアプリの使い方
+`http://localhost:8080/`にアクセスし React App を開く
+
+### 実行手順
+```sh
+yarn install
+yarn start
+```
+
+## どこまで実装が完了して、何が終わっていないか
+
+### 実装済
+- ３目並べができる
+- 追加課題
+
+### 未実装
+特になし
