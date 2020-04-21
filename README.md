@@ -20,13 +20,16 @@
 [React 公式チュートリアル](https://ja.reactjs.org/tutorial/tutorial.html#setup-option-2-local-development-environment)
 
 ## このアプリの使い方
-`http://localhost:8080/`にアクセスし React App を開く
+`http://localhost:8080/`にアクセスし vue を開く
 
 ### 実行手順
 ```sh
 yarn install
 yarn start
 ```
+
+### 開発
+- pugを用いて view を別ファイルに分離 `src/views`
 
 ## どこまで実装が完了して、何が終わっていないか
 
@@ -35,4 +38,4 @@ yarn start
 - 追加課題
 
 ### 未実装
-特になし
+- x-template を用いての実装
